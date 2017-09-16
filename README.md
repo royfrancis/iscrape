@@ -32,8 +32,10 @@ devtools::install_github("royfrancis/iscrape")
 
 In this walkthough, we go through the steps of using the functions once the package has been installed.
 
-We will use the username `instagram` to get information from this page:
+We will use the username "instagram" to get information from this page:
 https://www.instagram.com/instagram/
+
+![user-instagram]("images/user-instagram.png")
 
 Get the user webpage.
 
@@ -60,8 +62,10 @@ instagram
       197 
 ```
 
-We will use the hashtag `instagram` to get information from this page:
+We will use the hashtag "instagram" to get information from this page:
 https://www.instagram.com/explore/tags/instagram/
+
+![tag-instagram]("images/tag-instagram.png")
 
 Get the hashtag webpage.
 
@@ -84,8 +88,8 @@ Use a loop to get data from multiple user names/hashtags.
 # a vector of valid username/hashtags
 names <- c("instagram","instagramjapan","music")
 
-klist <- list()
 len <- length(names)
+klist <- vector("list",length=len)
 for(i in 1:len)
 {
   cat(paste0("\nRunning ",i," of ",len,"; ",names[i],"; "))
@@ -108,6 +112,15 @@ for(i in 1:len)
   # variation in timing page request
   Sys.sleep(sample(1:6,1,replace=T))
 }
+
+dplyr::bind_rows(klist)
+```
+
+```
+            name posts followers following hashtagcounts
+1      instagram  4729 226200000       197     171200000
+2 instagramjapan  1432   2700000       651       3800000
+3          music   580   2300000       288     160900000
 ```
 
 If a username/hashtag is invalid, the page could not be retrieved or the text matching fails, NA is returned. Therefore, if you get NAs, it is a good idea to check the page manually.
