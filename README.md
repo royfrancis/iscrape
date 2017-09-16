@@ -1,8 +1,6 @@
 # iscrape  
 
-A basic web scraper for Instagram. 
-
-Functions included in this package can retrieve the following information:
+A basic web scraper for Instagram.  Functions included in this package can retrieve the following information:
 
 From __username__   
 
@@ -16,26 +14,19 @@ From __hashtag__
 
 ## Installation  
 
-Install R software for your system. Install dependency packages:
+Install R software for your system. Install dependency packages. Then, install `iscrape` from GitHub using `devtools`
 
 ```r
 install.packages(c("devtools","dplyr","httr","stringr"),dep=T)
-```
-
-Then install `iscrape` from GitHub using `devtools`
-
-```r
 devtools::install_github("royfrancis/iscrape")
 ```
 
 ## Walkthrough  
 
-In this walkthough, we go through the steps of using the functions once the package has been installed.
-
 We will use the username "instagram" to get information from this page:
 https://www.instagram.com/instagram/
 
-![user-instagram]("images/user-instagram.png")
+![](images/user-instagram.jpg)
 
 Get the user webpage.
 
@@ -65,7 +56,7 @@ instagram
 We will use the hashtag "instagram" to get information from this page:
 https://www.instagram.com/explore/tags/instagram/
 
-![tag-instagram]("images/tag-instagram.png")
+![](images/tag-instagram.jpg)
 
 Get the hashtag webpage.
 
