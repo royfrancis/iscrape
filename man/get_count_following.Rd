@@ -2,9 +2,9 @@
 % Please edit documentation in R/functions.R
 \name{get_count_following}
 \alias{get_count_following}
-\title{Get following count from a user page.}
+\title{Get following count from a user page}
 \usage{
-get_count_following(userpage = NULL, warn = TRUE)
+get_count_following(userpage = NULL)
 }
 \arguments{
 \item{userpage}{A user page. An output from \code{\link{get_page_user}}.}
@@ -13,13 +13,12 @@ get_count_following(userpage = NULL, warn = TRUE)
 Returns an integer following count or NA.
 }
 \description{
-Parses a text userpage and extracts following count.
+Parses a text userpage and extracts following count
 }
 \details{
-If the parsing fails, NA is returned with a warning (when \code{warn=T}).
+If the parsing fails, NA is returned with a warning.
 }
 \examples{
 pu <- get_page_user("instagram")
 cf <- get_count_following(pu)
-
 }

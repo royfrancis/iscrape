@@ -21,7 +21,9 @@ install.packages(c("devtools","dplyr","httr","stringr"),dep=T)
 devtools::install_github("royfrancis/iscrape")
 ```
 
-## Walkthrough  
+## Tutorial
+
+### User page metrics
 
 We will use the username "instagram" to get information from this page:
 https://www.instagram.com/instagram/
@@ -53,6 +55,21 @@ instagram
       197 
 ```
 
+Get posts, followers and following as a data.frame from a vector of usernames.
+
+```r
+get_page_info(c("instagram","travelandleisure","minimalism"))
+```
+
+```
+          username posts followers following
+1        instagram  6250 335800000       223
+2 travelandleisure  6091   4900000       440
+3       minimalism   856    249600       129
+```
+
+### Hashtag metrics
+
 We will use the hashtag "instagram" to get information from this page:
 https://www.instagram.com/explore/tags/instagram/
 
@@ -73,51 +90,12 @@ instagram
 171200000 
 ```
 
-Use a loop to get data from multiple user names/hashtags.
-
-```r
-# a vector of valid username/hashtags
-names <- c("instagram","instagramjapan","music")
-
-len <- length(names)
-klist <- vector("list",length=len)
-for(i in 1:len)
-{
-  cat(paste0("\nRunning ",i," of ",len,"; ",names[i],"; "))
-  pu <- get_page_user(names[i])
-  pcount <- get_count_post(pu)
-  cat(pcount," ")
-  fcount <- get_count_follower(pu)
-  cat(fcount," ")
-  focount <- get_count_following(pu)
-  cat(focount,"; ")
-
-  ph <- get_page_hashtag(names[i])
-  hcount <- get_count_hashtag(ph)
-  cat(hcount,";")
-
-  klist[[i]] <- data.frame(name=names[i],posts=pcount,
-                           followers=fcount,following=focount,
-                           hashtagcounts=hcount,stringsAsFactors=F)
-
-  # variation in timing page request
-  Sys.sleep(sample(1:6,1,replace=T))
-}
-
-dplyr::bind_rows(klist)
-```
-
-```
-            name posts followers following hashtagcounts
-1      instagram  4729 226200000       197     171200000
-2 instagramjapan  1432   2700000       651       3800000
-3          music   580   2300000       288     160900000
-```
-
-If a username/hashtag is invalid, the page could not be retrieved or the text matching fails, NA is returned. Therefore, if you get NAs, it is a good idea to check the page manually.
-
 ### Disclaimer  
 
-Note that web scraping is strictly discouraged by Instagram. Do not use this tool to scraping thousands of pages or it is likely that your IP address may be blocked by Instagram. Speaking of IP addresses, it might be a good idea to use a VPN when using this tool.
+Note that web scraping is discouraged by Instagram. Do not use this tool to scraping thousands of pages or it is likely that your IP address may be blocked by Instagram. Speaking of IP addresses, it might be a good idea to use a VPN when using this tool.
 
 This package was created for personal use, but you are free to use it. The package is very simple relying on text pattern matching. This means that the code is functional at the time of writing, but future changes to Instagram page structure may cause these functions to break. This package is unlikely to be updated or maintained regularly.
+
+***
+
+2020 | Roy Francis

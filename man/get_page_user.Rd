@@ -2,9 +2,9 @@
 % Please edit documentation in R/functions.R
 \name{get_page_user}
 \alias{get_page_user}
-\title{Get user page.}
+\title{Get user page}
 \usage{
-get_page_user(username = NULL, warn = TRUE)
+get_page_user(username = NULL)
 }
 \arguments{
 \item{username}{A character denoting a valid instagram username.}
@@ -13,11 +13,11 @@ get_page_user(username = NULL, warn = TRUE)
 Returns an httr webpage object text or NA.
 }
 \description{
-Gets the user page.
+Gets the user page
 }
 \details{
 If the username is not valid, it does not return a webpage,
-NA is returned with a warning (when \code{warn=T}).
+NA is returned with a warning.
 }
 \examples{
 # get page for username: instagram

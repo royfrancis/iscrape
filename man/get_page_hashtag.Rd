@@ -2,9 +2,9 @@
 % Please edit documentation in R/functions.R
 \name{get_page_hashtag}
 \alias{get_page_hashtag}
-\title{Get hashtag page.}
+\title{Get hashtag page}
 \usage{
-get_page_hashtag(hashtag = NULL, warn = TRUE)
+get_page_hashtag(hashtag = NULL)
 }
 \arguments{
 \item{hashtag}{A character denoting a valid instagram hashtag.}
@@ -13,11 +13,11 @@ get_page_hashtag(hashtag = NULL, warn = TRUE)
 Returns an httr webpage object as text or NA.
 }
 \description{
-Gets the hashtag page.
+Gets the hashtag page
 }
 \details{
 If the tag is not valid and/or if it does not return a webpage,
-NA is returned with a warning (when \code{warn=T}).
+NA is returned with a warning.
 }
 \examples{
 # get page for hashtag: instagram
